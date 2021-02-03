@@ -1,0 +1,29 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>controlSales</groupId>
+	<artifactId>control-sales</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>controlSales</name>
+	<description>Control de vendas com javafx, consumindo uma api rest</description>
+
+	<dependencies>
+
+		<!-- https://mvnrepository.com/artifact/org.openjfx/javafx -->
+		<!-- https://mvnrepository.com/artifact/org.openjfx/javafx -->
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-fxml</artifactId>
+			<version>14</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.10.2</version>
+		</dependency>
+
+	</dependencies>
+
+</project>

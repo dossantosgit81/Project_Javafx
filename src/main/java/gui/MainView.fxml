@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="659.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MainViewController">
+   <content>
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="Vendas">
+                  <items>
+                    <MenuItem fx:id="menuItemRegistrationSale" mnemonicParsing="false" onAction="#onMenuItemRegistrationSaleAction" text="Cadastro de vendas" />
+                        <MenuItem fx:id="historySales" mnemonicParsing="false" onAction="#onMenuItemHistorySalesAction" text="Histórico de vendas" />
+                        <MenuItem fx:id="totalSale" mnemonicParsing="false" onAction="#onMenuItemTotalSaleAction" text="Total por data" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Relatórios">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Sair" />
+              </menus>
+            </MenuBar>
+         </children>
+      </VBox>
+   </content>
+</ScrollPane>
