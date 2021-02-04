@@ -11,7 +11,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ConsumerAPI {
 	
-	public boolean post(Map<String, String> values, String uri) {
+	public HttpResponse<String> post(Map<String, String> values, String uri) {
 		
 		var objectMapper = new ObjectMapper();
 		try {			
@@ -25,11 +25,11 @@ public class ConsumerAPI {
 					.build();
 			HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 			
-			return response.statusCode() == 200;
+			return response;
 			
 		}catch(Exception e) {
 			System.out.println("Erro ao cadastrar "+ e);
-			return false;
+			return null;
 		}
 		
 	}

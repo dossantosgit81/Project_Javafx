@@ -8,6 +8,8 @@ import javafx.stage.Stage;
 
 public class ApplicationControlSales extends Application {
 
+	private static Scene mainScene;
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		try {		
@@ -16,16 +18,22 @@ public class ApplicationControlSales extends Application {
 		
 		scrollPane.setFitToHeight(true);
 		scrollPane.setFitToWidth(true);
+	
 		
-		Scene mainScene = new Scene(scrollPane);
+		mainScene = new Scene(scrollPane);
 		primaryStage.setScene(mainScene);
 		primaryStage.setTitle("Tela principal");
+		primaryStage.setHeight(700);
 		primaryStage.show();
 		
 		}catch(Exception e) {
 		 e.printStackTrace();
 		}
 		
+	}
+
+	public static Scene getMainScene() {
+		return mainScene;
 	}
 
 	public static void main(String[] args) {
