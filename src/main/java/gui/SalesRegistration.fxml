@@ -64,8 +64,8 @@
         </rowConstraints>
          <children>
             <Label text="Produto:" />
-            <TextField GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" text="Pesquisar" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TextField fx:id="getProductData" GridPane.rowIndex="1" />
+            <Button fx:id="searchProductData" mnemonicParsing="false" onAction="#onSearchProductDataAction" text="Pesquisar" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="5.0" />
                </GridPane.margin>
@@ -100,22 +100,22 @@
                   <Insets left="15.0" />
                </GridPane.margin>
             </Label>
-            <TextField prefHeight="25.0" prefWidth="352.0" GridPane.rowIndex="1">
+            <TextField fx:id="getProductCode" prefHeight="25.0" prefWidth="352.0" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin></TextField>
-            <TextField GridPane.rowIndex="3" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TextField fx:id="getProductDescription" GridPane.rowIndex="3" />
+            <TextField fx:id="getProductPrice" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="15.0" />
                </GridPane.margin>
             </TextField>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <TextField fx:id="getProductQtd" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets left="15.0" />
                </GridPane.margin>
             </TextField>
-            <Button mnemonicParsing="false" text="Adicionar a sacola" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <Button fx:id="addProductCart" mnemonicParsing="false" onAction="#onAddProductCartAction" text="Adicionar a sacola" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets left="5.0" />
                </GridPane.margin>
@@ -130,14 +130,17 @@
       </GridPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <TableView maxWidth="375.0" prefHeight="155.0" prefWidth="370.0">
+            <TableView fx:id="tableViewProducts" maxWidth="375.0" prefHeight="155.0" prefWidth="370.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="Código" />
-                <TableColumn prefWidth="75.0" text="Produto" />
-                  <TableColumn prefWidth="75.0" text="Qtd" />
-                  <TableColumn prefWidth="75.0" text="Preço" />
-                  <TableColumn prefWidth="75.0" text="Subtotal" />
+                <TableColumn fx:id="tableColumnId" prefWidth="75.0" text="Código" />
+                <TableColumn fx:id="tableColumnDescription" prefWidth="75.0" text="Produto" />
+                  <TableColumn fx:id="tableColumnqtd" prefWidth="75.0" text="Qtd" />
+                  <TableColumn fx:id="tableColumnPrice" prefWidth="75.0" text="Preço" />
+                  <TableColumn fx:id="tableColumnSubtotal" prefWidth="75.0" text="Subtotal" />
               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
             </TableView>
             <ToolBar layoutX="392.0" layoutY="115.0" prefHeight="40.0" prefWidth="200.0">
               <items>

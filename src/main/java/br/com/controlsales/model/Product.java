@@ -2,74 +2,50 @@ package br.com.controlsales.model;
 
 public class Product {
 	
-	private int id;
+	private Integer id;
+	private String description;
+	private double price;
+	private Integer quantity_stock;
+	private Integer for_id;
 	
-	private String descricao;
 	
-	private double preco;
-	
-	private int quantidade;
-	
-	private String fornecedor;
-	
-	private int id_fornecedor;
-
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
-
-	public String getDescricao() {
-		return descricao;
+	public String getDescription() {
+		return description;
 	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setDescription(String description) {
+		this.description = description;
 	}
-
-	public double getPreco() {
-		return preco;
+	public double getPrice() {
+		return price;
 	}
-
-	public void setPreco(double preco) {
-		this.preco = preco;
+	public void setPrice(double price) {
+		this.price = price;
 	}
-
-	public int getQuantidade() {
-		return quantidade;
+	public Integer getQuantity_stock() {
+		return quantity_stock;
 	}
-
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
+	public void setQuantity_stock(Integer quantity_stock) {
+		this.quantity_stock = quantity_stock;
 	}
-
-	public String getFornecedor() {
-		return fornecedor;
+	public Integer getFor_id() {
+		return for_id;
 	}
-
-	public void setFornecedor(String fornecedor) {
-		this.fornecedor = fornecedor;
+	public void setFor_id(Integer for_id) {
+		this.for_id = for_id;
 	}
-
-	public int getId_fornecedor() {
-		return id_fornecedor;
-	}
-
-	public void setId_fornecedor(int id_fornecedor) {
-		this.id_fornecedor = id_fornecedor;
-	}
-
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", descricao=" + descricao + ", preco=" + preco + ", quantidade=" + quantidade
-				+ ", fornecedor=" + fornecedor + ", id_fornecedor=" + id_fornecedor + "]";
+		return "Product [id=" + id + ", description=" + description + ", price=" + price + ", quantity_stock="
+				+ quantity_stock + ", for_id=" + for_id + "]";
 	}
 	
 	
-	
-	
+
 
 }
