@@ -66,8 +66,9 @@ public class SalesRegistrationController implements Initializable {
 	@FXML
 	private TableColumn<ProdCart, Double> tableColumnSubtotal;
 	
-	private List<ProdCart> cart;
+	private List<ProdCart> cart = new ArrayList<>();
 	private ObservableList<ProdCart> obsProd;
+	private ProdCart pc;
 
 	@FXML
 	public synchronized void onBtnSearchClientAction() {
@@ -113,30 +114,32 @@ public class SalesRegistrationController implements Initializable {
 		}
 	}
 	
+	public void setProdCart(ProdCart prodCart) {
+		this.pc = prodCart;
+	}
+	
 	@FXML
 	public synchronized void onAddProductCartAction() {
-		
-		tableColumnId.setCellValueFactory(new PropertyValueFactory<>("id"));
-		tableColumnPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
-		tableColumnDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
-		tableColumnqtd.setCellValueFactory(new PropertyValueFactory<>("qtd"));
-		tableColumnSubtotal.setCellValueFactory(new PropertyValueFactory<>("subtotal"));
-		
-		ProdCart pc = new ProdCart();
-		pc.setId(Integer.parseInt(getProductCode.getText()));
-		pc.setPrice(Double.parseDouble(getProductPrice.getText()));
-		pc.setDescription(getProductDescription.getText());
-		pc.setQtd(Integer.parseInt(getProductQtd.getText()));
-		pc.setSubtotal(pc.getQtd() * pc.getPrice());
-		
-		cart = new ArrayList<>();
-		cart.add(pc);
-		System.out.println(cart);
-		obsProd = FXCollections.observableArrayList(cart);
-		tableViewProducts.setItems(obsProd);
+			tableColumnId.setCellValueFactory(new PropertyValueFactory<>("id"));
+			tableColumnPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
+			tableColumnDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+			tableColumnqtd.setCellValueFactory(new PropertyValueFactory<>("qtd"));
+			tableColumnSubtotal.setCellValueFactory(new PropertyValueFactory<>("subtotal"));
+			
+			setProdCart(new ProdCart());
+			pc.setId(Integer.parseInt(getProductCode.getText()));
+			pc.setPrice(Double.parseDouble(getProductPrice.getText()));
+			pc.setDescription(getProductDescription.getText());
+			pc.setQtd(Integer.parseInt(getProductQtd.getText()));
+			pc.setSubtotal(pc.getQtd() * pc.getPrice());
+			
+			cart.add(pc);
+			System.out.println(cart);
+			obsProd = FXCollections.observableArrayList(cart);
+			tableViewProducts.setItems(obsProd);
 
-		getProductData.clear();
-		getProductQtd.clear();
+			getProductData.clear();
+			getProductQtd.clear();
 		
 	}
 
