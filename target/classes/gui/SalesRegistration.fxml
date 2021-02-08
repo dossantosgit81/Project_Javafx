@@ -144,7 +144,7 @@
             </TableView>
             <ToolBar layoutX="392.0" layoutY="115.0" prefHeight="40.0" prefWidth="200.0">
               <items>
-                <Button mnemonicParsing="false" text="Ir a tela de pagamento" />
+                <Button fx:id="goPayment" mnemonicParsing="false" onAction="#onGoPaymentAction" text="Ir a tela de pagamento" />
               </items>
             </ToolBar>
          </children>

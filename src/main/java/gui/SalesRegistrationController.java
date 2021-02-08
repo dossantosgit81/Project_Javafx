@@ -51,6 +51,8 @@ public class SalesRegistrationController implements Initializable {
 	private TextField getProductQtd;
 	@FXML
 	private Button addProductCart;
+	@FXML
+	private Button goPayment;
 	
 	//Attributes for table
 	@FXML
@@ -69,6 +71,7 @@ public class SalesRegistrationController implements Initializable {
 	private List<ProdCart> cart = new ArrayList<>();
 	private ObservableList<ProdCart> obsProd;
 	private ProdCart pc;
+	private static Double totalSale = 0.0;
 
 	@FXML
 	public synchronized void onBtnSearchClientAction() {
@@ -137,10 +140,28 @@ public class SalesRegistrationController implements Initializable {
 			System.out.println(cart);
 			obsProd = FXCollections.observableArrayList(cart);
 			tableViewProducts.setItems(obsProd);
+			double total = 0.0;
+			for (ProdCart itemCart : cart) {
+				total += itemCart.getSubtotal();
+			}
+			totalSale = total;
+			System.out.println(totalSale);
 
 			getProductData.clear();
 			getProductQtd.clear();
 		
+	}
+	
+	
+	public static Double getTotalSale() {
+		return totalSale;
+	}
+
+	
+	@FXML
+	public synchronized void onGoPaymentAction() {
+		MainViewController lv = new MainViewController();
+		lv.loadView("/gui/Payment.fxml");
 	}
 
 	@Override
