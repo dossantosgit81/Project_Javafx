@@ -72,9 +72,18 @@ public class SalesRegistrationController implements Initializable {
 	private ObservableList<ProdCart> obsProd;
 	private ProdCart pc;
 	private static Double totalSale = 0.0;
+	private static Integer idClient;
+
+	public static Integer getIdClient() {
+		return idClient;
+	}
+
+	public static void setIdClient(Integer idClient) {
+		SalesRegistrationController.idClient = idClient;
+	}
 
 	@FXML
-	public synchronized void onBtnSearchClientAction() {
+	public void onBtnSearchClientAction() {
 		String cpf = getClientName.getText();
 		String uri = "http://localhost:5000/search";
 		
@@ -90,6 +99,7 @@ public class SalesRegistrationController implements Initializable {
 			List<Client> client = mapper.readValue(response, new TypeReference<List<Client>>() {});
 			System.out.println(client.get(0).getName());
 			setClientName.setText(client.get(0).getName());
+			idClient = client.get(0).getId();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -97,7 +107,7 @@ public class SalesRegistrationController implements Initializable {
 	}
 	
 	@FXML
-	public synchronized void onSearchProductDataAction() {
+	public void onSearchProductDataAction() {
 		String productId = getProductData.getText();
 		
 		HashMap<String, String> values = new HashMap<>();
@@ -107,7 +117,7 @@ public class SalesRegistrationController implements Initializable {
 		ObjectMapper mapper = new ObjectMapper();
 		String response = api.post(values, "http://localhost:5000/find").body();
 		try {
-			List<Product> product = mapper.readValue(response, new TypeReference<List<Product>>() {});
+			List<Product> product = mapper.readValue(response, new TypeReference<>() {});
 			Product prod = product.get(0);
 			getProductCode.setText(prod.getId().toString());
 			getProductPrice.setText(String.valueOf(prod.getPrice()));
@@ -122,7 +132,7 @@ public class SalesRegistrationController implements Initializable {
 	}
 	
 	@FXML
-	public synchronized void onAddProductCartAction() {
+	public void onAddProductCartAction() {
 			tableColumnId.setCellValueFactory(new PropertyValueFactory<>("id"));
 			tableColumnPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
 			tableColumnDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
@@ -148,18 +158,15 @@ public class SalesRegistrationController implements Initializable {
 			System.out.println(totalSale);
 
 			getProductData.clear();
-			getProductQtd.clear();
-		
+			getProductQtd.clear();		
 	}
-	
 	
 	public static Double getTotalSale() {
 		return totalSale;
 	}
 
-	
 	@FXML
-	public synchronized void onGoPaymentAction() {
+	public void onGoPaymentAction() {
 		MainViewController lv = new MainViewController();
 		lv.loadView("/gui/Payment.fxml");
 	}

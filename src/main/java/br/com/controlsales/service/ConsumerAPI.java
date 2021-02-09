@@ -11,7 +11,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ConsumerAPI {
 	
-	public HttpResponse<String> post(Map<String, String> values, String uri) {
+	public synchronized HttpResponse<String> post(Map<String, String> values, String uri) {
 		
 		var objectMapper = new ObjectMapper();
 		try {			
@@ -34,7 +34,7 @@ public class ConsumerAPI {
 		
 	}
 	
-	public String get(String uri) {
+	public synchronized String get(String uri) {
 		HttpClient client = HttpClient.newHttpClient();
 		HttpRequest request  = HttpRequest.newBuilder()
 				.GET()
@@ -51,7 +51,7 @@ public class ConsumerAPI {
 		}
 	}
 	
-	public boolean put(Map<String, String> values, String uri) {
+	public synchronized boolean put(Map<String, String> values, String uri) {
 		
 		var objectMapper = new ObjectMapper();
 		try {	
