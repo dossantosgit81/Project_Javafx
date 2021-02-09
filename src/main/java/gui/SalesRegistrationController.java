@@ -67,11 +67,29 @@ public class SalesRegistrationController implements Initializable {
 	private TableColumn<ProdCart, Integer> tableColumnqtd;
 	@FXML
 	private TableColumn<ProdCart, Double> tableColumnSubtotal;
-	
-	private List<ProdCart> cart = new ArrayList<>();
 	private ObservableList<ProdCart> obsProd;
-	private ProdCart pc;
+	private static ProdCart pc;
 	private static Double totalSale = 0.0;
+	
+	
+	private static List<ProdCart> cart = new ArrayList<>();
+	
+	public static ProdCart getPc() {
+		return pc;
+	}
+
+	public static void setPc(ProdCart pc) {
+		SalesRegistrationController.pc = pc;
+	}
+	
+	public static List<ProdCart> getCart() {
+		return cart;
+	}
+
+	public static void setCart(List<ProdCart> cart) {
+		SalesRegistrationController.cart = cart;
+	}
+
 	private static Integer idClient;
 
 	public static Integer getIdClient() {
