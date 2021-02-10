@@ -6,12 +6,9 @@ import java.util.ResourceBundle;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import br.com.controlsales.model.LastSaleId;
 import br.com.controlsales.model.ProdCart;
-import br.com.controlsales.model.QuantityStock;
 import br.com.controlsales.service.ConsumerAPI;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -56,13 +53,22 @@ public class PaymentController implements Initializable {
 				pc.getId();
 				String json = api.get("http://localhost:5000/stock/"+pc.getId());
 				Integer qtd_stock = Integer.parseInt(json);
-				System.out.println(qtd_stock);
-				// mapper.readValue(json, QuantityStock.class);
-				// System.out.println(new QuantityStock());
+				Integer qtd_update = qtd_stock - pc.getQtd();
+				HashMap<String, String> valuesQtdNew = new HashMap<>();
+				valuesQtdNew.put("id", Integer.toString(pc.getId()));
+				valuesQtdNew.put("qtd_new", Integer.toString(qtd_update));
+				api.put(valuesQtdNew, "http://localhost:5000/stock");
+				HashMap<String, String> valItensSales = new HashMap<>(); 
+				valItensSales.put("sale_id", Integer.toString(lastIdSale));
+				valItensSales.put("product_id", Integer.toString(pc.getId()));
+				valItensSales.put("qtd", Integer.toString(pc.getQtd()));
+				valItensSales.put("subtotal", Double.toString(pc.getSubtotal()));
+				api.post(valItensSales, "http://localhost:5000/cart");
+
 			}
 			
+			
 		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		System.out.println();

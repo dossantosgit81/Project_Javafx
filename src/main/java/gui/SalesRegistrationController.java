@@ -70,10 +70,10 @@ public class SalesRegistrationController implements Initializable {
 	private ObservableList<ProdCart> obsProd;
 	private static ProdCart pc;
 	private static Double totalSale = 0.0;
-	
+
 	
 	private static List<ProdCart> cart = new ArrayList<>();
-	
+
 	public static ProdCart getPc() {
 		return pc;
 	}
@@ -174,7 +174,7 @@ public class SalesRegistrationController implements Initializable {
 			}
 			totalSale = total;
 			System.out.println(totalSale);
-
+			
 			getProductData.clear();
 			getProductQtd.clear();		
 	}
